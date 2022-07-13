@@ -21,7 +21,6 @@
         <sonar.organization>winprovit</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.exclusions>
-            src/main/java/pt/winprovit/exercise/configuration/**/*,
             src/main/java/pt/winprovit/exercise/api/**/*,
             src/main/java/pt/winprovit/exercise/dto/**/*
         </sonar.exclusions>
@@ -94,7 +93,6 @@
                 <version>${jacoco.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>pt/winprovit/exercise/configuration/**/*</exclude>
                         <exclude>pt/winprovit/exercise/api/**/*</exclude>
                         <exclude>pt/winprovit/exercise/dto/**/*</exclude>
                     </excludes>
