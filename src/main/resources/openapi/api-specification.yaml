@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: Winprovit Exercise
+  description: Alticci Sequence service
+  version: 1.0.0
+  x-audience: external-public
+  x-api-id: 78e624f8-f73e-4bbe-a918-bda261fd13ec
+  contact:
+    name: winprovit
+    url: http://www.winprovit.pt
+    email: info@winprovit.com
+
+components:
+  responses:
+    SequenceStatusResponse:
+      description: this contains the generated alticci sequence
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/SequenceResponse"
+
+  schemas:
+    SequenceResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        data:
+          $ref: "#/components/schemas/Sequence"
+
+    Sequence:
+      type: object
+      properties:
+        value:
+          type: string
+        series:
+          type: string
+
+servers:
+  - url: 'http://localhost:8080'
+    description: locally served url
+tags:
+  - Alticci
+
+paths:
+  /alticci/{number}:
+    get:
+      summary: Generate Alticci Sequeuce
+      description: generate alticci sequeuce based on the provided value
+      operationId: generateAlticciSequeuce
+      tags:
+        - Alticci
+      parameters:
+        - in: path
+          name: number
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          $ref: "#/components/responses/SequenceStatusResponse"
